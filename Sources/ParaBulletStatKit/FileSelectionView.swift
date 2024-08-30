@@ -117,11 +117,15 @@ public struct FileSelectionView: View {
             let worksheetData = try file.parseWorksheet(at: worksheet)
             var columnData: [Double] = []
 
-            print(worksheetData.data?.rows.publisher.values ?? "NA")
+            print(worksheetData.data?.rows.compactMap { $0.cells }.first?.map({ cell in
+                cell.value
+            }) ?? "NA")
 
 //            for row in worksheetData.data?.rows ?? [] {
 //                // Assuming you want the first column
-//                if let cell = row.cells.first, let value = cell.stringValue(sharedStrings), let doubleValue = Double(value) {
+//                if let cell = row.cells.first,
+//                   let value = cell.stringValue(sharedStrings),
+//                   let doubleValue = Double(value) {
 //                    columnData.append(doubleValue)
 //                }
 //            }
