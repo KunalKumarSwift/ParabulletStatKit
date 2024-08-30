@@ -29,7 +29,7 @@ public struct FileSelectionView: View {
                 .buttonStyle(.borderedProminent)
                 .fileImporter(
                     isPresented: $isFileImporterPresented,
-                    allowedContentTypes: [excelFileType],
+                    allowedContentTypes: [.data],
                     allowsMultipleSelection: false
                 ) { result in
                     handleFileSelection(result: result)
