@@ -97,6 +97,17 @@ public struct FileSelectionView: View {
     }
 
     private func loadDataFromExcel(fileURL: URL) {
+
+        guard fileURL.startAccessingSecurityScopedResource() else {
+                print("Failed to access security-scoped resource.")
+                return
+            }
+
+            defer {
+                // Ensure that the resource is released when done
+                fileURL.stopAccessingSecurityScopedResource()
+            }
+
         do {
             printFileContents(fileURL: fileURL)
             let file = XLSXFile(filepath: fileURL.absoluteString)
