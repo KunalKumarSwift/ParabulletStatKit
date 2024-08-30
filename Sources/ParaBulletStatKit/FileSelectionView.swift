@@ -111,19 +111,20 @@ public struct FileSelectionView: View {
         do {
             let fileData = try Data(contentsOf: fileURL)
             let file = try XLSXFile(data: fileData)
-            guard let sharedStrings = try file.parseSharedStrings(),
-                  let worksheet = try file.parseWorksheetPaths().first else {
+            guard let worksheet = try file.parseWorksheetPaths().first else {
                 return
             }
             let worksheetData = try file.parseWorksheet(at: worksheet)
             var columnData: [Double] = []
 
-            for row in worksheetData.data?.rows ?? [] {
-                // Assuming you want the first column
-                if let cell = row.cells.first, let value = cell.stringValue(sharedStrings), let doubleValue = Double(value) {
-                    columnData.append(doubleValue)
-                }
-            }
+            print(worksheetData.data?.rows)
+
+//            for row in worksheetData.data?.rows ?? [] {
+//                // Assuming you want the first column
+//                if let cell = row.cells.first, let value = cell.stringValue(sharedStrings), let doubleValue = Double(value) {
+//                    columnData.append(doubleValue)
+//                }
+//            }
 
             selectedData = columnData
             calculator.data = selectedData
