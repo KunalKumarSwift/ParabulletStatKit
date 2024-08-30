@@ -14,6 +14,7 @@ struct RaisedButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .foregroundColor(.primary)
             .padding()
             .background(backgroundColor)  // Background color with opacity
             .clipShape(RoundedRectangle(cornerRadius: 16))  // Apply corner radius

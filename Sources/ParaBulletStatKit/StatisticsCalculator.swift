@@ -21,7 +21,7 @@ public class StatisticsCalculator: ObservableObject {
     @Published var median: Double = 0.0
     @Published var variance: Double = 0.0
 
-    init(data: [Double] = []) {
+    public init(data: [Double] = []) {
         self.data = data
         calculateStatistics()
     }
