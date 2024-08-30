@@ -26,7 +26,7 @@ public struct FileSelectionView: View {
                 .buttonStyle(.borderedProminent)
                 .fileImporter(
                     isPresented: $isFileImporterPresented,
-                    allowedContentTypes: [UTType.fileURL],
+                    allowedContentTypes: [UTType.spreadsheet],
                     allowsMultipleSelection: false
                 ) { result in
                     handleFileSelection(result: result)
