@@ -109,14 +109,13 @@ public struct FileSelectionView: View {
             }
         printFileContents(fileURL: fileURL)
         do {
-
-            let file = XLSXFile(filepath: fileURL.absoluteString)
-            guard let sharedStrings = try file?.parseSharedStrings(),
-                  let worksheet = try file?.parseWorksheetPaths().first,
-                  let worksheetData = try file?.parseWorksheet(at: worksheet) else {
+            let fileData = try Data(contentsOf: fileURL)
+            let file = try XLSXFile(data: fileData)
+            guard let sharedStrings = try file.parseSharedStrings(),
+                  let worksheet = try file.parseWorksheetPaths().first else {
                 return
             }
-
+            let worksheetData = try file.parseWorksheet(at: worksheet)
             var columnData: [Double] = []
 
             for row in worksheetData.data?.rows ?? [] {
@@ -136,7 +135,7 @@ public struct FileSelectionView: View {
     func printFileContents(fileURL: URL) {
         do {
             // Read the file contents as a string
-            let fileContents = try String(contentsOf: fileURL, encoding: .utf8)
+            let fileContents = try Data(contentsOf: fileURL)//String(contentsOf: fileURL, encoding: .utf8)
 
             // Print the contents to the console
             print(fileContents)
