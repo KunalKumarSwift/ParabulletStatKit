@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct HistogramView: View {
+public struct HistogramView: View {
     @ObservedObject var calculator: StatisticsCalculator
 
     @State private var binStart: Double = 0.0

@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct RaisedButtonStyle: ButtonStyle {
+public struct RaisedButtonStyle: ButtonStyle {
     var baseColor: Color  // Base color
     var backgroundColor: Color  // Background color with opacity
     var borderColor: Color  // Border color without opacity
 
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(.primary)
             .padding()

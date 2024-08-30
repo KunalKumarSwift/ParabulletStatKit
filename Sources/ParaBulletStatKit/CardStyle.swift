@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct CardStyle: ViewModifier {
+public struct CardStyle: ViewModifier {
     var baseColor: Color  // Base color
     var backgroundColor: Color  // Background color with opacity
     var borderColor: Color  // Border color without opacity
 
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .padding()
             .background(backgroundColor)  // Background color with opacity
@@ -25,7 +25,7 @@ struct CardStyle: ViewModifier {
     }
 }
 
-extension View {
+public extension View {
     func cardStyle(baseColor: Color = Color.red) -> some View {
         let backgroundColorWithOpacity = baseColor.opacity(0.4)
         let borderColorWithoutOpacity = baseColor

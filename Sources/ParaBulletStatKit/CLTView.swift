@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct CLTView: View {
+public struct CLTView: View {
     @EnvironmentObject var statisticsCalculator: StatisticsCalculator
     @StateObject var cltCalculator: CLTStatisticsCalculator
     @State private var isLoading: Bool = false
@@ -27,7 +27,7 @@ struct CLTView: View {
         return StatisticsCalculator(data: cltCalculator.sampleMeans)
     }
 
-    var body: some View {
+    public var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 inputView

@@ -10,12 +10,12 @@ import SwiftUI
 import CoreXLSX
 import UniformTypeIdentifiers
 
-struct FileSelectionView: View {
+public struct FileSelectionView: View {
     @State private var isFileImporterPresented = false
     @State private var selectedData: [Double] = []
     @EnvironmentObject private var calculator: StatisticsCalculator
 
-    var body: some View {
+    public var body: some View {
         NavigationView {
             VStack(spacing: 20) {
                 Button("Select Excel File") {

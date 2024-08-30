@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-extension PreviewProvider {
+public extension PreviewProvider {
     static var statisticsCalculator: StatisticsCalculator {
         StatisticsCalculator(data: data)
     }
 }
 
-extension PreviewProvider {
+public extension PreviewProvider {
     static var data: [Double] {
         [
             74.5,

@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct StatCard<Value>: View {
+public struct StatCard<Value>: View {
     let title: String
     let value: Value
     let roundingDigits: Int
 
-    var body: some View {
+    public var body: some View {
         HStack {
             Text(title)
                 .font(.headline)
