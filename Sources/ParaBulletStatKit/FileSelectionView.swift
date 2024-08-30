@@ -107,9 +107,9 @@ public struct FileSelectionView: View {
                 // Ensure that the resource is released when done
                 fileURL.stopAccessingSecurityScopedResource()
             }
-
+        printFileContents(fileURL: fileURL)
         do {
-            printFileContents(fileURL: fileURL)
+
             let file = XLSXFile(filepath: fileURL.absoluteString)
             guard let sharedStrings = try file?.parseSharedStrings(),
                   let worksheet = try file?.parseWorksheetPaths().first,
