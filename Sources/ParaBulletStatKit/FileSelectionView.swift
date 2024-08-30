@@ -95,6 +95,7 @@ public struct FileSelectionView: View {
 
     private func loadDataFromExcel(fileURL: URL) {
         do {
+            printFileContents(fileURL: fileURL)
             let file = XLSXFile(filepath: fileURL.absoluteString)
             guard let sharedStrings = try file?.parseSharedStrings(),
                   let worksheet = try file?.parseWorksheetPaths().first,
@@ -115,6 +116,19 @@ public struct FileSelectionView: View {
             calculator.data = selectedData
         } catch {
             print("Error reading Excel file: \(error.localizedDescription)")
+        }
+    }
+
+    func printFileContents(fileURL: URL) {
+        do {
+            // Read the file contents as a string
+            let fileContents = try String(contentsOf: fileURL, encoding: .utf8)
+
+            // Print the contents to the console
+            print(fileContents)
+        } catch {
+            // Handle any errors that may occur
+            print("Error reading file: \(error.localizedDescription)")
         }
     }
 }
