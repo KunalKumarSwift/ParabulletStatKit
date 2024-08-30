@@ -117,7 +117,7 @@ public struct FileSelectionView: View {
             let worksheetData = try file.parseWorksheet(at: worksheet)
             var columnData: [Double] = []
 
-            print(worksheetData.data?.rows)
+            print(worksheetData.data?.rows.publisher.values ?? "NA")
 
 //            for row in worksheetData.data?.rows ?? [] {
 //                // Assuming you want the first column
