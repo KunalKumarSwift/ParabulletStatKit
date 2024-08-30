@@ -16,7 +16,10 @@ public struct FileSelectionView: View {
     @EnvironmentObject private var calculator: StatisticsCalculator
 
     public init() {}  // Public initializer
-    
+
+    // Define the UTType for .xlsx files
+        let excelFileType = UTType(filenameExtension: "xlsx", conformingTo: .data)!
+
     public var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -26,7 +29,7 @@ public struct FileSelectionView: View {
                 .buttonStyle(.borderedProminent)
                 .fileImporter(
                     isPresented: $isFileImporterPresented,
-                    allowedContentTypes: [UTType.spreadsheet],
+                    allowedContentTypes: [excelFileType],
                     allowsMultipleSelection: false
                 ) { result in
                     handleFileSelection(result: result)
