@@ -15,6 +15,8 @@ public struct FileSelectionView: View {
     @State private var selectedData: [Double] = []
     @EnvironmentObject private var calculator: StatisticsCalculator
 
+    public init() {}  // Public initializer
+    
     public var body: some View {
         NavigationView {
             VStack(spacing: 20) {
