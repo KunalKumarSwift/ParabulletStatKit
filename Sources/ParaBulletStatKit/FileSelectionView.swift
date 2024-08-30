@@ -107,7 +107,7 @@ public struct FileSelectionView: View {
                 // Ensure that the resource is released when done
                 fileURL.stopAccessingSecurityScopedResource()
             }
-        printFileContents(fileURL: fileURL)
+        //printFileContents(fileURL: fileURL)
         do {
             let fileData = try Data(contentsOf: fileURL)
             let file = try XLSXFile(data: fileData)
