@@ -95,7 +95,7 @@ public struct FileSelectionView: View {
 
     private func loadDataFromExcel(fileURL: URL) {
         do {
-            let file = XLSXFile(filepath: fileURL.path())
+            let file = XLSXFile(filepath: fileURL.absoluteString)
             guard let sharedStrings = try file?.parseSharedStrings(),
                   let worksheet = try file?.parseWorksheetPaths().first,
                   let worksheetData = try file?.parseWorksheet(at: worksheet) else {
