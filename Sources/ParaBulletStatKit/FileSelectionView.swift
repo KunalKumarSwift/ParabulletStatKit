@@ -21,7 +21,7 @@ public struct FileSelectionView: View {
         let excelFileType = UTType(filenameExtension: "xlsx", conformingTo: .data)!
 
     public var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 20) {
                 Button("Select Excel File") {
                     isFileImporterPresented = true
@@ -36,50 +36,42 @@ public struct FileSelectionView: View {
                 }
                 .padding()
 
-                if !selectedData.isEmpty {
-                    NavigationLink(destination: StatisticsView(calculator: calculator)) {
+                if selectedData.isEmpty {
+                    Text("No data loaded. Please select an Excel file.")
+                        .foregroundColor(.gray)
+                }
+                VStack {
+                    NavigationLink(destination: AnyView(StatisticsView(calculator: calculator))) {
                                         Text("View Stats")
                                             .padding()
                                             .background(Color.blue)
                                             .foregroundColor(.white)
-                                            .cornerRadius(8)
+                                            .cornerRadius(32)
                                             .frame(maxWidth: .infinity)
                                     }
                                     .padding(.top)
 
-                } else {
-                    Text("No data loaded. Please select an Excel file.")
-                        .foregroundColor(.gray)
+                    NavigationLink(destination: AnyView(HistogramView(calculator: calculator))) {
+                                        Text("View Histogram")
+                                            .padding()
+                                            .background(Color.blue)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(32)
+                                            .frame(maxWidth: .infinity)
+                                    }
+                                    .padding(.top)
+
+                    NavigationLink(destination: AnyView(CLTView(statisticsCalculator: calculator))) {
+                                        Text("View CLT")
+                                            .padding()
+                                            .background(Color.blue)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(32)
+                                            .frame(maxWidth: .infinity)
+                                    }
+                                    .padding(.top)
                 }
-                NavigationLink(destination: StatisticsView(calculator: calculator)) {
-                                    Text("View Stats")
-                                        .padding()
-                                        .background(Color.blue)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(32)
-                                        .frame(maxWidth: .infinity)
-                                }
-                                .padding(.top)
 
-                NavigationLink(destination: HistogramView(calculator: calculator)) {
-                                    Text("View Histogram")
-                                        .padding()
-                                        .background(Color.blue)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(32)
-                                        .frame(maxWidth: .infinity)
-                                }
-                                .padding(.top)
-
-                NavigationLink(destination: CLTView(statisticsCalculator: calculator)) {
-                                    Text("View CLT")
-                                        .padding()
-                                        .background(Color.blue)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(32)
-                                        .frame(maxWidth: .infinity)
-                                }
-                                .padding(.top)
             }
             .padding()
         }
