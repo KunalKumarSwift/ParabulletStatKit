@@ -92,7 +92,10 @@ public struct CLTView: View {
                     isLoading = false
                 }
             }
-            .padding()
+            .raisedButtonStyle()
+            .padding(16)
+
+
         }
         .padding(.horizontal) // Ensures the input view is aligned properly within the scroll view
     }

@@ -69,7 +69,7 @@ public struct HistogramView: View {
                         .font(.subheadline)
                         .multilineTextAlignment(.trailing)
                 }
-                .cardStyle()
+                .cardStyle(baseColor: Color.blue)
             }
             .padding()
 
@@ -78,7 +78,7 @@ public struct HistogramView: View {
                     await calculateFrequencies()
                 }
             }
-            .padding()
+            .raisedButtonStyle()
 
             Chart($frequencies.wrappedValue, id: \.bin) { item in
                 BarMark(
@@ -87,7 +87,6 @@ public struct HistogramView: View {
                 )
                 .foregroundStyle(colorForBin(item.bin))
             }
-            .padding()
             .frame(height: 300)
             .chartYAxisLabel("Frequency")
             .chartXAxisLabel(position: .bottom, alignment: .center) {
